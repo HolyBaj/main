@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="addtank.css" />
+    <title>Add Tank</title>
+    
+  </head>
+  <body>
+    
+    
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="#" id="tanksInfo" class="sign-in-form">
+            <h2 class="title">ADD TANK</h2>
+            <a href="#" class="tank"><img src="image/gas.png">
+            </a>
+            <form action="">
+              <select id="typeoftank" name="typeoftank" required>
+                <option value="" disabled selected>Select Brand</option>
+                <option value="lpg">LPG</option>
+                <option value="solane">Solane</option>
+                <option value="superkalan">Super Kalan</option>
+                <option value="brent">Brent</option>
+              </select><br>
+              
+            <input type="submit" value="submit" class="btn solid" id="redirectButton" />
+            <input type="submit" value="skip" class="btn solid"  id="skipButton"/>
+          </form>
+        </div>
+      </div>
+     
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h1>Hello! Welcome! </h1>
+            <p>
+              Before proceeding, please fill out the Add Tank form by selecting a tank brand and selecting the tank weight.
+            </p>
+          </div>
+          <img src="image/logotank.png" class="image" alt="" />
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+    <script src="db.js"></script>
+    <script src="add.js"></script>
+  </body>
+  <script>
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (!user) {
+        // Redirect unauthenticated users to the login page
+        window.location.href = '../index.html'; // Change to your login page
+      }
+    });
+
+    let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+    let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+    
+    let MsgHead = document.getElementById('msg');
+    let GreetHead = document.getElementById('greet');
+    let SignoutBtn = document.getElementById('signoutbutton');
+      
+    
+    
+    let Signout = ()=>{
+      sessionStorage.removeItem("user-creds");
+      sessionStorage.removeItem("user-info");
+      window.location.href = '../index.html'
+    }
+    
+    let CheckCred = ()=>{
+      if(!sessionStorage.getItem("user-creds"))
+      window.location.href = '../index.html'
+      else{
+        MsgHead.innerText = `user with email "${UserCreds.email}" logged in`;
+        GreetHead.innerText = `welcome ${UserInfo.Username}!`;
+      }
+    }
+    window.addEventListener('load' , CheckCred);
+    SignoutBtn.addEventListener('click', Signout);
+      </script>
+  <script>
+   
+    document.getElementById('redirectButton').addEventListener('click', function() {
+     
+      var confirmed = confirm('Added Tank Successfully!');
+      
+      if (confirmed) {
+       
+        window.location.href = '../UserDashboard/dashboard.html';
+      }
+    });
+    document.getElementById("backButton").onclick = function () {
+        history.back();
+    };
+    document.getElementById('skipButton').addEventListener('click', function() {
+     
+       window.location.href = 'dashboard/dashboard.html';
+     
+   });
+
+   
+    
+  </script>
+  
+ 
+</html>

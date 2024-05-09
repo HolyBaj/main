@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GasWatch</title>
+
+  <link rel="shortcut icon" href="./favicon.ico" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+    <script src="AddTankForm/db.js"></script>
+   
+</head>
+
+<body id="top">
+
+  <!-- 
+    - #HEADER
+  -->
+<!-- what -->
+  <header class="header" data-header>
+<!--  Login Modal -->
+<div id="id01" class="w3-modal " style="display: none;">
+  <div class="w3-modal-content">
+    <div class="w3-container">
+      <h3 style="text-align: center;">Login</h3>
+      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+      
+      <form id="mainForm">
+      <input type="email" id="EmailInp" placeholder="Email">
+      <input type="password" id="PasswordInp" placeholder="Password">
+      <span onclick="togglePasswordVisibility();" class="password-toggle-btn">
+        <i id="togglePasswordVisibilityIcon" class="far fa-eye"></i>
+      </span>
+      <input type="submit" value="submit">
+      </form>
+
+      <a href="">Forgot Password?</a>
+      <a href="#" onclick="openSignupModal()"> Dont have an account? Signup</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- Signup -->
+
+<div id="id02" class="w3-modal" style="display: none;">
+  <div class="w3-modal-content">
+    <div class="w3-container">
+      <h3 style="text-align: center;">Signup</h3>
+      <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+      <!-- Add Signup Form Fields here -->
+    <form id="MainForm">
+      <input type="text" id="nameInp" placeholder="Name">
+      <input type="email" id="emailInp" placeholder="Email">
+      <input type="password" id ="passwordInp" placeholder="Password">
+      <span onclick="togglePasswordVisibility_2();" class="password-toggle-btn">
+        <i id="togglePasswordVisibilityIcon_2" class="far fa-eye"></i>
+      </span>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <div id="toast"></div>
+      </form> 
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+</script>
+    <div class="overlay" data-overlay></div>
+      <div class="container">
+        <div class="header-btn-group">
+          <button class="nav-open-btn" aria-label="Open Menu" data-nav-open-btn>
+            <ion-icon name="menu-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-bottom">
+      <div class="container">
+        <ul class="social-list">
+          <li>
+            <a href="#" class="">
+              <ion-icon name=""></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="">
+              <ion-icon name=""></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="">
+              <ion-icon name=""></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+        <nav class="navbar" data-navbar>
+          <div class="navbar-top">
+            <a href="#" class="logo">
+              <img src="./assets/images/log.png" alt="GasWatch">
+            </a>
+            <button class="nav-close-btn" aria-label="Close Menu" data-nav-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+
+            <li>
+              <a href="#home" class="navbar-link" data-nav-link>home</a>
+            </li>
+
+            <li>
+              <a href="#destination" class="navbar-link" data-nav-link>SAFETY TIPS</a>
+            </li>
+
+            <li>
+              <a href="#package" class="navbar-link" data-nav-link>FEATURES</a>
+            </li>
+
+            <li>
+              <a href="#contact" class="navbar-link" data-nav-link>contact us</a>
+            </li>
+
+          </ul>
+
+        </nav>
+        <div class="btn-group">
+          
+          
+          <button class="btn btn-secondary"  href="AddTankForm/addtank.html" >ADD TANK</button>
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+    
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="hero" id="home">
+        <div class="container">
+          <h2 class="h1 hero-title">Welcome to GasWatch</h2>
+          <p class="hero-text">
+            "Never worry about running out of gas again with our real-time monitoring solution, now equipped with advanced gas leak detection”
+          </p>
+          <div class="btn-group">
+            <a href="https://www.youtube.com/watch?v=xm545L4ZpMs"><button class="btn btn-primary">Watch Video</button></a>
+          </div>
+        </div>
+        
+      </section>
+
+
+
+      <!-- 
+        - #POPULAR
+      -->
+
+      <section class="popular" id="destination">
+        <div class="container">
+
+          <h1 class="h2 section-title">Safety Tips</h1>
+
+          <p class="section-text">
+            "Staying safe is not an accident; it's a conscious choice fueled by awareness and precaution."
+          </p>
+
+          <ul class="popular-list">
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/hh.png" alt="San miguel, italy" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-rating">
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                  </div>
+                  <p class="card-text">
+                    Train users on gas stove monitoring to emphasize the importance of promptly reporting any issues. 
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/jj.png" alt="" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-rating">
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                  </div>
+
+                    <p class="card-text">
+                    Place gas leak detectors near the stove and regularly test them to promptly detect any leaks.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="popular-card">
+
+                <figure class="card-img">
+                  <img src="./assets/images/gg.png" alt="" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <div class="card-rating">
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                    <ion-icon name=""></ion-icon>
+                  </div>
+                
+                  <p class="card-text">
+                    Display the emergency contact number to ensure everyone knows who to call in case of an emergency.
+                  </p>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </ul>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #PACKAGE
+      -->
+
+      <section class="package" id="package">
+        <div class="container">
+
+          <h1 class="h2 section-title">Amazing Features</h1>
+
+          <p class="section-text">
+            GasWatch is a progressive web application designed to monitor potential gas stove levels using a weigh scale and detect leakages using a sensor.
+          </p>
+
+          <ul class="package-list">
+
+            <li>
+              <div class="package-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/2.png" alt="Experience The Great Holiday On Beach" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">Safety Tips</h3>
+
+                  <p class="card-text">
+                    Laoreet, voluptatum nihil dolor esse quaerat mattis explicabo maiores, est aliquet porttitor! Eaque,
+                    cras, aspernatur.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+
+                  </ul>
+
+                </div>
+
+                <div class="card-price">
+
+                  <div class="wrapper">
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="package-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/1.png" alt="Experience The Great Holiday On Beach" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">Warning Notification</h3>
+
+                  <p class="card-text">
+                    Laoreet, voluptatum nihil dolor esse quaerat mattis explicabo maiores, est aliquet porttitor! Eaque,
+                    cras, aspernatur.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+
+                  </ul>
+
+                </div>
+
+                <div class="card-price">
+
+                  <div class="wrapper">
+
+                </div>
+
+              </div>
+            </li>
+
+
+            <li>
+              <div class="package-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/4.png" alt="Experience The Great Holiday On Beach" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">Gas Leakage Detection</h3>
+
+                  <p class="card-text">
+                    Laoreet, voluptatum nihil dolor esse quaerat mattis explicabo maiores, est aliquet porttitor! Eaque,
+                    cras, aspernatur.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+
+                  </ul>
+
+                </div>
+
+                <div class="card-price">
+
+                  <div class="wrapper">
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="package-card">
+
+                <figure class="card-banner">
+                  <img src="./assets/images/3.png" alt="Experience The Great Holiday On Beach" loading="lazy">
+                </figure>
+
+                <div class="card-content">
+
+                  <h3 class="h3 card-title">Gas Monitoring Level</h3>
+
+                  <p class="card-text">
+                    Laoreet, voluptatum nihil dolor esse quaerat mattis explicabo maiores, est aliquet porttitor! Eaque,
+                    cras, aspernatur.
+                  </p>
+
+                  <ul class="card-meta-list">
+
+
+                  </ul>
+
+                </div>
+
+                <div class="card-price">
+
+                  <div class="wrapper">
+
+                </div>
+
+              </div>
+            </li>
+          </ul>
+        </div>
+       </div>
+      </section>
+
+      <!-- 
+        - #CTA
+      -->
+
+      <section class="cta" id="contact">
+        <div class="container">
+
+          <div class="cta-content">
+            <p class="section-subtitle">Call To Action</p>
+
+            <h2 class="h2 section-title">BUREAU OF FIRE PROTECTION</h2>
+
+            <p class="section-text">
+              "SAVE LIVES AND PROPERTIES"
+            </p>
+          </div>
+
+         <a href="#contact"> <button class="btn btn-primary">Contact Us !</button></a>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="#" class="logo">
+            <img src="./assets/images/log.png" alt="GasWatch logo">
+          </a>
+
+          <p class="footer-text">
+            GasWatch is a progressive web application designed to monitor potential gas stove levels using a weigh scale and detect leakages using a sensor. 
+          </p>
+
+        </div>
+
+        <div class="footer-contact">
+
+          <h4 class="contact-title">Contact Us</h4>
+
+          <p class="contact-text">
+            Feel free to contact and reach us !!
+          </p>
+
+          <ul>
+
+            <li class="contact-item">
+              <ion-icon name="call-outline"></ion-icon>
+
+              <a href="tel:+01123456790" class="contact-link">(02) 8426-0246</a>
+            </li>
+
+            <li class="contact-item">
+              <ion-icon name="mail-outline"></ion-icon>
+
+              <a href="mailto:info.tourly.com" class="contact-link">ofc@bfp.gov.ph</a>
+            </li>
+
+            <li class="contact-item">
+              <ion-icon name="location-outline"></ion-icon>
+
+              <address>Bureau of Fire Protection <br>
+                Agham Road, Barangay Bagong Pag-Asa, Quezon City</address>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="footer-contact">
+
+          <h4 class="contact-title">LINKS</h4>
+
+          <ul>
+
+            <li class="contact-item">
+              <a href="#home" class="contact-link">HOME</a>
+            </li>
+
+            <li class="contact-item">
+              <a href="#destination" class="contact-link">SAFETY TIPS</a>
+            </li>
+
+            <li class="contact-item">
+              <a href="#packages" class="contact-link">FEATURES</a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2024 <a href="">GasWatch</a>. All rights reserved
+        </p>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top" data-go-top>
+    <ion-icon name="chevron-up-outline"></ion-icon>
+  </a>
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+</body>
+
+
+</html>

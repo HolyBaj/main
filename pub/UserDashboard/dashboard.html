@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="dashboard.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	<title>GasWatch</title>
+	<link rel="shortcut icon" href="./favicon.ico" type="image/svg+xml">
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	
+</head>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+	<script	 src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+	<script type="module">
+		// Import the functions you need from the SDKs you need
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+		// TODO: Add SDKs for Firebase products that you want to use
+		// https://firebase.google.com/docs/web/setup#available-libraries
+	  
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+		  apiKey: "AIzaSyB46bALbbnAAY5pgtuk8BQAvc-_Lnhy3qg",
+		  authDomain: "auth-7dd0a.firebaseapp.com",
+		  databaseURL: "https://auth-7dd0a-default-rtdb.firebaseio.com",
+		  projectId: "auth-7dd0a",
+		  storageBucket: "auth-7dd0a.appspot.com",
+		  messagingSenderId: "963879432363",
+		  appId: "1:963879432363:web:3c7c860eba5b84bc4047ee"
+		};
+	  
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+			var database = firebase.database();
+
+			var dataRef1 = database.ref('tanksInfo/mark@gmail,com/brand')
+			var dataRef2 = database.ref('tanksInfo/mark@gmail,com/Weight')
+			var dataRef3 = database.ref('tanksInfo/mark@gmail,com/Status')
+			
+			dataRef1.on('value', function(getdata1){
+				var br = getdata1.val();
+				document.getElementById('brand').innerHTML = br;
+			})
+			dataRef2.on('value', function(getdata2){
+				var wei = getdata2.val();
+				document.getElementById('wt').innerHTML = wei + "kg";
+
+				var percentage = (wei / maxWeight) * 100;
+    			document.getElementById('weightPercentage').innerHTML = percentage.toFixed(2) + "%";
+				
+			});
+			dataRef3.on('value', function(getdata3){
+				var stat = getdata3.val();
+				document.getElementById('stat').innerHTML = stat + " detected";
+			})
+			
+	  </script>
+<body>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">GasWatch</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<span class="text"></span>
+				</a>
+			</li>
+			
+		</ul>
+		<ul class="side-menu">
+			
+			<li>
+				<a href="#" class="logout" id="signoutbutton">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text" type="button" >Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<form action="#" class="search">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<div class="right-side">
+				<h4 id="greet" style="margin-right:10px ;"></h4>
+				
+				<a href="#" class="notification">
+				
+			</a>
+			<a href="#" class="profile">
+				<img src="image/user.png">
+			</a>
+			</div>
+			
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="../home.html">Home</a>
+						</li>
+					</ul>
+				</div>
+				<a href="../AddTankForm/addtank.html" class="btn-download" >
+					<i class='bx bxs-cloud-download' ></i>
+					<span class="text">Edit Tank</span>
+				</a>
+			</div>
+
+
+			<div class="table-data">
+				<div class="order">
+				  <div class="head">
+					<h3>INFORMATION</h3>
+					<div id="tankInfoDisplay"></div>
+				  </div>
+				  <table>
+					<thead>
+					  <tr>
+						<th>Brand Type</th>
+						<th>Tank Weight</th>
+						<th>Status</th>
+						<th>Percentage</th>
+					  </tr>
+					  <tr>
+						<td id="brand"></td>
+						<td id="wt"></td>
+						<td id="stat"></td>
+						<td id="weightPercentage"></td>
+					  </tr>
+					</thead>
+					<tbody id="tankInfoBody">
+					  
+					</tbody>
+				  </table>
+				</div>
+				<div class="todo">
+				  <div class="head">
+					<h3>Status</h3>
+				  </div>
+				  <div>
+					<table>
+					  <tr>
+						<th>Gas Level% :</th>
+					  </tr>
+					  <tr>
+						<td><h4 style="color: gray; padding: 15px;" id="gasLevel">50%</h4></td>
+					  </tr>
+					</table>
+					<div class="gas-container">
+					  <div class="gas-level">
+						<div class="level"><h3 id="text-level">50%</h3></div>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			
+			 
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+	
+	<script src="dash.js"></script>
+	
+	<script>
+
+let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+let MsgHead = document.getElementById('msg');
+let GreetHead = document.getElementById('greet');
+let SignoutBtn = document.getElementById('signoutbutton');
+	
+
+
+let Signout = ()=>{
+	sessionStorage.removeItem("user-creds");
+	sessionStorage.removeItem("user-info");
+	window.location.href = '../index.html'
+}
+
+let CheckCred = ()=>{
+	if(!sessionStorage.getItem("user-creds"))
+	window.location.href = '../index.html'
+	else{
+		
+		GreetHead.innerText = `Welcome, ${UserInfo.Username}!`;
+	}
+}
+window.addEventListener('load' , CheckCred);
+SignoutBtn.addEventListener('click', Signout);
+	</script>
+</body>
+</html>
